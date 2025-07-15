@@ -98,7 +98,7 @@ const CRM = () => {
               <Dashboard />
             </TabsContent>
 
-            <TabsContent value="chat" className="flex-1 m-0">
+            <TabsContent value="chat" className="flex-1 m-0 h-0 overflow-hidden">
               {selectedContact ? (
                 <ChatInterface
                   contact={selectedContact}

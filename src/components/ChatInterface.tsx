@@ -145,7 +145,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   );
 
   return (
-    <div className="flex flex-col h-full bg-gradient-chat">
+    <div className="flex flex-col h-full max-h-full overflow-hidden bg-gradient-chat">
       {/* Chat Header */}
       <div className="flex-shrink-0 border-b border-border bg-card/80 backdrop-blur-sm p-4">
         <div className="flex items-center justify-between">

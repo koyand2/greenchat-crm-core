@@ -194,8 +194,8 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
       </div>
 
       {/* Messages Area */}
-      <div className="flex-1 min-h-0 relative">
-        <ScrollArea className="absolute inset-0">
+      <div className="flex-1 min-h-0">
+        <ScrollArea className="h-full">
           <div className="px-4 py-4 space-y-4">
             {messages.map((message) => (
               <MessageBubble key={message.id} message={message} />

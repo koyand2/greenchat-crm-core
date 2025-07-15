@@ -147,7 +147,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   return (
     <div className="flex flex-col h-full bg-gradient-chat">
       {/* Chat Header */}
-      <div className="border-b border-border bg-card/80 backdrop-blur-sm p-4">
+      <div className="flex-shrink-0 border-b border-border bg-card/80 backdrop-blur-sm p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="relative">
@@ -194,18 +194,20 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
       </div>
 
       {/* Messages Area */}
-      <ScrollArea className="flex-1 px-4 py-4">
-        <div className="space-y-4">
-          {messages.map((message) => (
-            <MessageBubble key={message.id} message={message} />
-          ))}
-          {isTyping && <TypingIndicator />}
-          <div ref={messagesEndRef} />
-        </div>
-      </ScrollArea>
+      <div className="flex-1 min-h-0 relative">
+        <ScrollArea className="absolute inset-0">
+          <div className="px-4 py-4 space-y-4">
+            {messages.map((message) => (
+              <MessageBubble key={message.id} message={message} />
+            ))}
+            {isTyping && <TypingIndicator />}
+            <div ref={messagesEndRef} />
+          </div>
+        </ScrollArea>
+      </div>
 
       {/* Message Input */}
-      <div className="border-t border-border bg-card/80 backdrop-blur-sm p-4">
+      <div className="flex-shrink-0 border-t border-border bg-card/80 backdrop-blur-sm p-4">
         <div className="flex items-center space-x-2">
           <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
             <Paperclip className="h-4 w-4" />

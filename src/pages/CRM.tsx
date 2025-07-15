@@ -65,7 +65,7 @@ const CRM = () => {
     <div className="h-screen flex flex-col bg-background">
       <Header onToggleSidebar={() => setIsSidebarCollapsed(!isSidebarCollapsed)} />
       
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden h-[calc(100vh-64px)]">
         <ContactSidebar
           contacts={contacts}
           selectedContact={selectedContact}

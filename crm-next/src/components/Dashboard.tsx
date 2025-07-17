@@ -4,17 +4,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import {
-  MessageCircle,
-  Users,
-  TrendingUp,
-  Clock,
-  Plus,
-  Send,
-  UserPlus,
-  BarChart3,
-  Activity
-} from 'lucide-react';
+import { MessageCircle, Users, TrendingUp, Clock } from 'lucide-react';
+import { Send, UserPlus, BarChart3, Activity, Plus } from 'lucide-react';
 
 const Dashboard = () => {
   const stats = [
@@ -92,33 +83,33 @@ const Dashboard = () => {
       title: 'Send Broadcast',
       description: 'Send message to multiple contacts',
       icon: Send,
-      color: 'bg-gradient-primary',
+      color: 'bg-primary',
     },
     {
       title: 'Add Contact',
       description: 'Create new contact record',
       icon: UserPlus,
-      color: 'bg-gradient-secondary',
+      color: 'bg-primary',
     },
     {
       title: 'View Reports',
       description: 'Analyze performance metrics',
       icon: BarChart3,
-      color: 'bg-gradient-primary',
+      color: 'bg-primary',
     },
     {
       title: 'Manage Teams',
       description: 'Configure team settings',
       icon: Users,
-      color: 'bg-gradient-secondary',
+      color: 'bg-primary',
     },
   ];
 
   return (
-    <div className="flex-1 p-6 space-y-6 bg-gradient-secondary min-h-screen">
+    <div className="flex-1 p-6 space-y-6 from bg-gradient-to-b from-sky-200 via-sky-100 to-sky-50 min-h-screen">
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-3xl font-bold text-black">Dashboard</h1>
+        <p className="text-semibold-foregro">
           Welcome back! Here's what's happening with your customer conversations.
         </p>
       </div>
@@ -135,7 +126,7 @@ const Dashboard = () => {
               <div className="text-2xl font-bold">{stat.value}</div>
               <div className="flex items-center space-x-1 text-xs text-muted-foreground">
                 <Badge
-                  variant={stat.changeType === 'positive' ? 'success' : 'destructive'}
+                  variant='default'
                   className="text-xs"
                 >
                   {stat.change}
@@ -176,7 +167,7 @@ const Dashboard = () => {
                         <Badge
                           variant={
                             activity.status === 'unread' ? 'default' :
-                              activity.status === 'new' ? 'success' :
+                              activity.status === 'new' ? 'default' :
                                 activity.status === 'resolved' ? 'secondary' : 'outline'
                           }
                           className="text-xs"

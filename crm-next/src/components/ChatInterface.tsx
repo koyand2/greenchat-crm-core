@@ -182,10 +182,10 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
                 <Badge
                   variant={
                     contact.status === "online"
-                      ? "online"
+                      ? "default"
                       : contact.status === "typing"
-                        ? "typing"
-                        : "offline"
+                        ? "secondary"
+                        : "outline"
                   }
                   className="text-xs"
                 >

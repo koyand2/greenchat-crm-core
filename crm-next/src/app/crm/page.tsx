@@ -91,14 +91,14 @@ const CRM = () => {
                   value="dashboard"
                   className="flex items-center space-x-2"
                 >
-                  <LayoutDashboard className="w-4 h-4" />
+                  <LayoutDashboard />
                   <span>Dashboard</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="chat"
                   className="flex items-center space-x-2"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle />
                   <span>Chat</span>
                   {selectedContact && (
                     <span className="text-xs text-muted-foreground">

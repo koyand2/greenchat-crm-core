@@ -151,9 +151,8 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
               value="all"
               className="text-xs flex items-center space-x-1"
             >
-              <Users className="w-3 h-3" />
               <span>Contatos</span>
-              <Badge variant="secondary" className="h-4 px-1 text-xs">
+              <Badge variant="default" className="h-4 px-1 text-xs">
                 {filteredContacts.all.length}
               </Badge>
             </TabsTrigger>
@@ -161,22 +160,15 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
               value="unread"
               className="text-xs flex items-center space-x-1"
             >
-              <Bell className="w-3 h-3" />
-              <span>Em pendente</span>
-              {filteredContacts.unread.length > 0 && (
-                <Badge variant="default" className="h-4 px-1 text-xs">
-                  {filteredContacts.unread.length}
-                </Badge>
-              )}
+              <span className="">Em andamento</span>
             </TabsTrigger>
             <TabsTrigger
               value="active"
               className="text-xs flex items-center space-x-1"
             >
-              <Activity className="w-3 h-3" />
-              <span>Pentende</span>
+              <span>Pendente</span>
               {filteredContacts.active.length > 0 && (
-                <Badge variant="success" className="h-4 px-1 text-xs">
+                <Badge variant="default" className="h-4 px-1 text-xs">
                   {filteredContacts.active.length}
                 </Badge>
               )}

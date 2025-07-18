@@ -81,41 +81,52 @@ const Dashboard = () => {
   const quickActions = [
     {
       title: 'Send Broadcast',
-      description: 'Send message to multiple contacts',
       icon: Send,
       color: 'bg-primary',
     },
     {
       title: 'Add Contact',
-      description: 'Create new contact record',
       icon: UserPlus,
       color: 'bg-primary',
     },
     {
       title: 'View Reports',
-      description: 'Analyze performance metrics',
       icon: BarChart3,
       color: 'bg-primary',
     },
     {
       title: 'Manage Teams',
-      description: 'Configure team settings',
       icon: Users,
       color: 'bg-primary',
     },
   ];
 
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'unread':
+        return 'bg-red-100 text-red-800 border-red-200';
+      case 'new':
+        return 'bg-green-100 text-green-800 border-green-200';
+      case 'resolved':
+        return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'read':
+        return 'bg-gray-100 text-gray-800 border-gray-200';
+      default:
+        return 'bg-gray-100 text-gray-800 border-gray-200';
+    }
+  };
+
   return (
-    <div className="flex-1 p-6 space-y-6 bg-background min-h-screen">
+    <div className="flex-1 p-4 lg:p-6 space-y-6 bg-background min-h-screen">
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-black">Dashboard</h1>
-        <p className="text-primary-foreground">
+        <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Dashboard</h1>
+        <p className="text-sm lg:text-base text-foreground">
           Welcome back! Here's what's happening with your customer conversations.
         </p>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         {stats.map((stat, index) => (
           <Card key={index} className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -123,7 +134,7 @@ const Dashboard = () => {
               <stat.icon className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
+              <div className="text-xl lg:text-2xl font-bold">{stat.value}</div>
               <div className="flex items-center space-x-1 text-xs text-foreground">
                 <Badge
                   variant={stat.changeType === 'positive' ? 'secondary' : 'destructive'}
@@ -138,7 +149,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
         {/* Recent Activity */}
         <Card className="shadow-md">
           <CardHeader>
@@ -152,27 +163,32 @@ const Dashboard = () => {
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-80">
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {recentActivity.map((activity) => (
                   <div key={activity.id} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-accent/20 transition-colors">
-                    <Avatar className="h-8 w-8">
+                    <Avatar className="h-8 w-8 flex-shrink-0">
                       <AvatarImage src={activity.avatar} alt="User" />
                       <AvatarFallback className="bg-gradient-primary text-white text-xs">
                         {activity.title.charAt(0)}
                       </AvatarFallback>
                     </Avatar>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between">
-                        <p className="text-sm font-medium truncate">{activity.title}</p>
+                    <div className="flex-1 min-w-0 space-y-1">
+                      <div className="flex items-start justify-between gap-2">
+                        <p className="text-sm font-medium text-foreground leading-tight">
+                          {activity.title}
+                        </p>
                         <Badge
-                          variant='secondary'
-                          className="text-xs text-bold text-foreground"
+                          className={`text-xs font-medium px-2 py-1 rounded-full flex-shrink-0 ${getStatusColor(activity.status)}`}
                         >
                           {activity.status}
                         </Badge>
                       </div>
-                      <p className="text-xs text-muted-foreground truncate">{activity.description}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{activity.time}</p>
+                      <p className="text-xs text-muted-foreground leading-tight">
+                        {activity.description}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {activity.time}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -193,19 +209,18 @@ const Dashboard = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 lg:gap-4">
               {quickActions.map((action, index) => (
                 <Button
                   key={index}
                   variant="outline"
-                  className="h-auto p-4 flex flex-col items-center space-y-2 hover:bg-accent/50 transition-colors"
+                  className="h-auto p-3 lg:p-4 flex flex-col items-center space-y-2 hover:bg-accent/50 transition-colors"
                 >
-                  <div className={`w-10 h-10 rounded-lg ${action.color} flex items-center justify-center`}>
-                    <action.icon className="h-5 w-5 text-white" />
+                  <div className={`w-8 h-8 lg:w-10 lg:h-10 rounded-lg ${action.color} flex items-center justify-center`}>
+                    <action.icon className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
                   </div>
                   <div className="text-center">
-                    <p className="font-medium text-sm">{action.title}</p>
-                    <p className="text-xs text-muted-foreground">{action.description}</p>
+                    <p className="font-medium text-xs lg:text-sm">{action.title}</p>
                   </div>
                 </Button>
               ))}

@@ -60,7 +60,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
         "w-full p-3 h-auto justify-start text-left transition-all duration-200",
         selectedContact?.id === contact.id &&
         "bg-primary-light border-l-2 border-l-primary",
-        !isCollapsed && "hover:bg-blue-50 hover:cursor-pointer"
+        !isCollapsed && "hover:bg-primary/10 hover:cursor-pointer"
       )}
       onClick={() => onSelectContact(contact)}
     >

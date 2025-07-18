@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            className="text-muted-foreground hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground cursor-pointer"
           >
             {isDark ? (
               <Sun className="h-4 w-4" />
@@ -67,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="default"
-                className="relative h-10 w-10 rounded-full"
+                className="relative h-10 w-10 rounded-full cursor-pointer"
               >
                 <Avatar className="h-10 w-10">
                   <AvatarFallback className="bg-gradient-primary text-white">

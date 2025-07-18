@@ -70,7 +70,7 @@ const CRM = () => {
         onToggleSidebar={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
       />
 
-      <div className="flex-1 flex overflow-hidden h-[calc(100vh-64px)]">
+      <div className="flex-1 flex overflow-auto h-[calc(100vh-64px)]">
         <ContactSidebar
           contacts={contacts}
           selectedContact={selectedContact}

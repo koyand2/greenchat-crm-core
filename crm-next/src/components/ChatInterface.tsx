@@ -271,7 +271,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
           <Button
             onClick={handleSendMessage}
             disabled={!newMessage.trim()}
-            className="bg-gradient-primary hover:opacity-90 transition-opacity"
+            className="bg-primary cursor-pointer"
           >
             <Send className="h-4 w-4" />
           </Button>

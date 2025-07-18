@@ -6,21 +6,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Contact, Message } from "@/types/chat";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { ContactType, Message } from "@/types/chat";
 import {
   Send,
   Paperclip,
   Mic,
   MoreVertical,
-  Phone,
-  Video,
+  CircleCheck,
+  ExternalLink,
   Check,
   CheckCheck,
+  Search
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Textarea } from "./ui/textarea";
 
 interface ChatInterfaceProps {
-  contact: Contact;
+  contact: ContactType;
   messages: Message[];
   onSendMessage: (content: string) => void;
 }
@@ -160,8 +163,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
   return (
     <div className="flex flex-col h-full max-h-[calc(100vh-64px-48px)] overflow-hidden bg-gradient-chat">
-      {/* Subtraindo header + tabs */}
-      {/* Chat Header */}
       <div className="flex-shrink-0 border-b border-border bg-card/80 backdrop-blur-sm p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -201,27 +202,54 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
           </div>
 
           <div className="flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <Phone className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <Video className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <MoreVertical className="h-4 w-4" />
-            </Button>
+            <TooltipProvider>
+              <div className="flex items-center space-x-2">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="text-muted-foreground hover:text-foreground cursor-pointer"
+                    >
+                      <CircleCheck className="h-4 w-4 text-foreground" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>Finalizar Atendimento</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="text-muted-foreground hover:text-foreground cursor-pointer"
+                    >
+                      <ExternalLink className="h-4 w-4 text-foreground" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>Transferir Atendimento</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="hover:text-foreground cursor-pointer"
+                    >
+                      <Search className="h-4 w-4 text-foreground" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>Buscar mensagens</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </TooltipProvider>
           </div>
         </div>
       </div>
@@ -251,14 +279,13 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
           </Button>
 
           <div className="flex-1 relative">
-            <Input
-              ref={inputRef}
+            <Textarea
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Type a message..."
               className="pr-12"
-            />
+            ></Textarea>
             <Button
               variant="ghost"
               size="icon"

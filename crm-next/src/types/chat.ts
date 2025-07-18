@@ -9,7 +9,7 @@ export interface Message {
   isFromUser: boolean;
 }
 
-export interface Contact {
+export interface ContactType {
   id: string;
   name: string;
   email: string;
@@ -24,8 +24,8 @@ export interface Contact {
 }
 
 export interface ChatState {
-  selectedContact: Contact | null;
+  selectedContact: ContactType | null;
   messages: Record<string, Message[]>;
-  contacts: Contact[];
+  contacts: ContactType[];
   isLoading: boolean;
 }

@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Search, Settings, LogOut, User, Moon, Sun } from "lucide-react";
+import { Search, Settings, LogOut, User, Moon, Sun, Phone } from "lucide-react";
 
 
 interface HeaderProps {
@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
                 className="relative h-10 w-10 rounded-full cursor-pointer"
               >
                 <Avatar className="h-10 w-10">
-                  <AvatarFallback className="bg-gradient-primary text-white">
+                  <AvatarFallback className="bg-primary text-white">
                     <User />
                   </AvatarFallback>
                 </Avatar>
@@ -82,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
                   <p className="text-sm font-medium leading-none">
                     {user?.name}
                   </p>
-                  <p className="text-xs leading-none text-muted-foreground">
+                  <p className="text-xs leading-none text-foreground">
                     {user?.email}
                   </p>
                 </div>

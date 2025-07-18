@@ -7,19 +7,19 @@ import Header from "@/components/Header";
 import ContactSidebar from "@/components/ContactSidebar";
 import ChatInterface from "@/components/ChatInterface";
 import Dashboard from "@/components/Dashboard";
-import { Contact, Message } from "@/types/chat";
+import { ContactType, Message } from "@/types/chat";
 import { mockContacts, mockMessages } from "@/data/mockData"; // Assuming you have mock data
-import { LayoutDashboard, MessageCircle } from "lucide-react";
+import { LayoutDashboard, MessageCircle, Contact, History } from "lucide-react";
 
 const CRM = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
-  const [contacts] = useState<Contact[]>(mockContacts);
-  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [contacts] = useState<ContactType[]>(mockContacts);
+  const [selectedContact, setSelectedContact] = useState<ContactType | null>(null);
   const [messages, setMessages] =
     useState<Record<string, Message[]>>(mockMessages);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
-  const handleSelectContact = (contact: Contact) => {
+  const handleSelectContact = (contact: ContactType) => {
     setSelectedContact(contact);
     setActiveTab("chat");
   };
@@ -70,7 +70,7 @@ const CRM = () => {
         onToggleSidebar={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
       />
 
-      <div className="flex-1 flex overflow-auto h-[calc(100vh-64px)]">
+      <div className="flex-1 flex lg:overflow-auto h-[calc(100vh)]">
         <ContactSidebar
           contacts={contacts}
           selectedContact={selectedContact}
@@ -86,17 +86,17 @@ const CRM = () => {
             className="flex-1 flex flex-col"
           >
             <div className="border-b border-border px-3 py-1">
-              <TabsList className="grid w-fit grid-cols-2">
+              <TabsList className="grid w-fit grid-cols-4 gap-4">
                 <TabsTrigger
                   value="dashboard"
-                  className="flex items-center space-x-2"
+                  className="flex items-center"
                 >
                   <LayoutDashboard />
                   <span>Dashboard</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="chat"
-                  className="flex items-center space-x-2"
+                  className="flex items-center"
                 >
                   <MessageCircle />
                   <span>Chat</span>
@@ -105,6 +105,20 @@ const CRM = () => {
                       - {selectedContact.name}
                     </span>
                   )}
+                </TabsTrigger>
+                <TabsTrigger
+                  value="contatos"
+                  className="flex items-center"
+                >
+                  <Contact />
+                  <span>Contatos</span>
+                </TabsTrigger>
+                <TabsTrigger
+                  value="historico"
+                  className="flex items-center"
+                >
+                  <History />
+                  <span>Histórico</span>
                 </TabsTrigger>
               </TabsList>
             </div>

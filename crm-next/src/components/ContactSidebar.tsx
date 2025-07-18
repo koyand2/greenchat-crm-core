@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Contact } from "@/types/chat";
+import { ContactType } from "@/types/chat";
 import {
   MessageCircle,
   Users,
@@ -16,9 +16,9 @@ import {
 import { cn } from "@/lib/utils";
 
 interface ContactSidebarProps {
-  contacts: Contact[];
-  selectedContact: Contact | null;
-  onSelectContact: (contact: Contact) => void;
+  contacts: ContactType[];
+  selectedContact: ContactType | null;
+  onSelectContact: (contact: ContactType) => void;
   isCollapsed: boolean;
   onToggle: () => void;
 }
@@ -53,7 +53,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
     return `${days}d ago`;
   };
 
-  const ContactItem: React.FC<{ contact: Contact }> = ({ contact }) => (
+  const ContactItem: React.FC<{ contact: ContactType }> = ({ contact }) => (
     <Button
       variant="ghost"
       className={cn(
@@ -130,7 +130,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
           variant="ghost"
           size="icon"
           onClick={onToggle}
-          className="text-muted-foreground hover:text-foreground"
+          className="text-muted-foreground hover:text-foreground cursor-pointer"
         >
           {isCollapsed ? (
             <ChevronRight className="h-4 w-4" />

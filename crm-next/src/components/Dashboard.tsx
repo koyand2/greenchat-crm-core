@@ -34,7 +34,7 @@ const Dashboard = () => {
       title: 'Avg Response Time',
       value: '2.4min',
       change: '-15%',
-      changeType: 'positive' as const,
+      changeType: 'negative' as const,
       icon: Clock,
     },
   ];
@@ -106,10 +106,10 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex-1 p-6 space-y-6 from bg-gradient-to-b from-sky-200 via-sky-100 to-sky-50 min-h-screen">
+    <div className="flex-1 p-6 space-y-6 bg-background min-h-screen">
       <div className="space-y-2">
         <h1 className="text-3xl font-bold text-black">Dashboard</h1>
-        <p className="text-semibold-foregro">
+        <p className="text-primary-foreground">
           Welcome back! Here's what's happening with your customer conversations.
         </p>
       </div>
@@ -124,9 +124,9 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stat.value}</div>
-              <div className="flex items-center space-x-1 text-xs text-muted-foreground">
+              <div className="flex items-center space-x-1 text-xs text-foreground">
                 <Badge
-                  variant='default'
+                  variant={stat.changeType === 'positive' ? 'secondary' : 'destructive'}
                   className="text-xs"
                 >
                   {stat.change}
@@ -154,7 +154,7 @@ const Dashboard = () => {
             <ScrollArea className="h-80">
               <div className="space-y-4">
                 {recentActivity.map((activity) => (
-                  <div key={activity.id} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-accent/50 transition-colors">
+                  <div key={activity.id} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-accent/20 transition-colors">
                     <Avatar className="h-8 w-8">
                       <AvatarImage src={activity.avatar} alt="User" />
                       <AvatarFallback className="bg-gradient-primary text-white text-xs">
@@ -165,12 +165,8 @@ const Dashboard = () => {
                       <div className="flex items-center justify-between">
                         <p className="text-sm font-medium truncate">{activity.title}</p>
                         <Badge
-                          variant={
-                            activity.status === 'unread' ? 'default' :
-                              activity.status === 'new' ? 'default' :
-                                activity.status === 'resolved' ? 'secondary' : 'outline'
-                          }
-                          className="text-xs"
+                          variant='secondary'
+                          className="text-xs text-bold text-foreground"
                         >
                           {activity.status}
                         </Badge>

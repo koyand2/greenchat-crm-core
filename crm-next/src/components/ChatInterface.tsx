@@ -86,7 +86,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
       {!message.isFromUser && (
         <Avatar className="h-8 w-8 mr-2 mt-1">
           <AvatarImage src={contact.avatar} alt={contact.name} />
-          <AvatarFallback className="bg-gradient-primary text-white text-xs">
+          <AvatarFallback className="bg-primary text-white text-xs">
             {contact.name.charAt(0)}
           </AvatarFallback>
         </Avatar>
@@ -96,7 +96,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         className={cn(
           "max-w-xs lg:max-w-md px-4 py-2 rounded-2xl shadow-sm",
           message.isFromUser
-            ? "bg-gradient-primary text-white"
+            ? "bg-ghost text-accent-foreground"
             : "bg-card border border-border"
         )}
       >
@@ -105,7 +105,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
           <span
             className={cn(
               "text-xs",
-              message.isFromUser ? "text-white/70" : "text-muted-foreground"
+              message.isFromUser ? "text-accent-foreground" : "text-accent-foreground"
             )}
           >
             {formatTime(message.timestamp)}
@@ -183,11 +183,11 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
                   variant={
                     contact.status === "online"
                       ? "default"
-                      : contact.status === "typing"
-                        ? "secondary"
-                        : "outline"
+                      : contact.status === "offline"
+                        ? "destructive"
+                        : "default"
                   }
-                  className="text-xs"
+                  className="text-xs text-white"
                 >
                   {contact.status === "typing" ? "typing..." : contact.status}
                 </Badge>

@@ -60,7 +60,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
         "w-full p-3 h-auto justify-start text-left transition-all duration-200",
         selectedContact?.id === contact.id &&
         "bg-primary-light border-l-2 border-l-primary",
-        !isCollapsed && "hover:bg-accent/50"
+        !isCollapsed && "hover:bg-blue-50 hover:cursor-pointer"
       )}
       onClick={() => onSelectContact(contact)}
     >
@@ -68,7 +68,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
         <div className="relative">
           <Avatar className="h-10 w-10">
             <AvatarImage src={contact.avatar} alt={contact.name} />
-            <AvatarFallback className="bg-gradient-primary text-white text-sm">
+            <AvatarFallback className="bg-primary text-white text-sm">
               {contact.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
@@ -85,7 +85,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
             <div className="flex items-center justify-between mb-1">
               <p className="font-medium text-sm truncate">{contact.name}</p>
               {contact.unreadCount > 0 && (
-                <Badge variant="default" className="h-5 px-1.5 text-xs">
+                <Badge variant="secondary" className="h-5 px-1.5 text-xs">
                   {contact.unreadCount}
                 </Badge>
               )}
@@ -125,7 +125,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
       )}
     >
       <div className="p-4 border-b border-border flex items-center justify-between">
-        {!isCollapsed && <h2 className="font-semibold text-lg">Contacts</h2>}
+        {!isCollapsed && <h2 className="font-semibold text-lg">Chat</h2>}
         <Button
           variant="ghost"
           size="icon"
@@ -152,7 +152,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
               className="text-xs flex items-center space-x-1"
             >
               <span>Contatos</span>
-              <Badge variant="default" className="h-4 px-1 text-xs">
+              <Badge variant="secondary" className="h-4 px-1 text-xs">
                 {filteredContacts.all.length}
               </Badge>
             </TabsTrigger>
@@ -168,7 +168,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
             >
               <span>Pendente</span>
               {filteredContacts.active.length > 0 && (
-                <Badge variant="default" className="h-4 px-1 text-xs">
+                <Badge variant="secondary" className="h-4 px-1 text-xs">
                   {filteredContacts.active.length}
                 </Badge>
               )}

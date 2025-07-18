@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Search, Settings, LogOut, User, Moon, Sun } from "lucide-react";
 
+
 interface HeaderProps {
   onToggleSidebar: () => void;
 }
@@ -33,10 +34,10 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
       <div className="h-full px-4 flex items-center justify-between">
         <div className="flex items-center space-x-4 flex-1">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-white text-sm font-bold">C</span>
             </div>
-            <h1 className="text-xl font-semibold text-foreground">Connect</h1>
+            <h1 className="text-xl font-semibold text-primary">Connect</h1>
           </div>
 
           <div className="relative flex-1 max-w-md mx-4">
@@ -65,13 +66,12 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
-                variant="ghost"
+                variant="default"
                 className="relative h-10 w-10 rounded-full"
               >
                 <Avatar className="h-10 w-10">
-                  <AvatarImage src={user?.avatar} alt={user?.name} />
                   <AvatarFallback className="bg-gradient-primary text-white">
-                    {user?.name?.charAt(0)}
+                    <User />
                   </AvatarFallback>
                 </Avatar>
               </Button>

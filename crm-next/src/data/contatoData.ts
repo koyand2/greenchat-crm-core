@@ -1,16 +1,16 @@
 export const contatos = [
   {
-    nome: 'Brenna mtb',
+    nome: 'Brenna',
     telefone: '+55 83 91234-7767',
     criadoEm: '17/01/2025 13:35',
   },
   {
-    nome: 'Fernando Júnior Espritcont Contabilidade',
+    nome: 'Fernando Júnior',
     telefone: '+55 81 91234-3151',
     criadoEm: '28/01/2025 14:03',
   },
   {
-    nome: 'Caldiane do Eco Detran Escritório',
+    nome: 'Caldiane',
     telefone: '+55 81 91234-9341',
     criadoEm: '13/01/2023 14:03',
   },

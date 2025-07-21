@@ -174,7 +174,7 @@ const Dashboard = () => {
 
         {/* Right column - Tempo médio */}
         <div className="lg:col-span-1">
-          <Card className="shadow-xl bg-background h-full">
+          <Card className="shadow-xl bg-card h-full">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
                 <CardTitle className="text-sm font-medium text-foreground">

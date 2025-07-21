@@ -141,13 +141,13 @@ const CRM = () => {
                 />
               ) : (
                 <div className="flex-1 flex items-center justify-center">
-                  <div className="text-center space-y-4">
+                  <div className="text-center space-y-2">
                     <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                       <MessageCircle className="w-8 h-8 text-foreground" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-foreground mb-2">
-                        Selecione um atendimento
+                      <h3 className="text-xl font-semibold text-foreground">
+                        Selecione uma conversa
                       </h3>
                       <p className="text-muted-foreground">
                         Escolha um contato da barra lateral para começar a conversa.
@@ -171,7 +171,7 @@ const CRM = () => {
               <Contato />
             </TabsContent>
             <TabsContent
-              className="flex-1 m-0 overflow-auto"
+              className="flex-1 m-0"
               value="atendimentos"
             >
               <Atendimentos />

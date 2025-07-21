@@ -39,10 +39,10 @@ export default function Atendimentos() {
               <MoreHorizontal className="h-4 w-4" />
             </button>
           </Badge>
-          <Button variant="ghost" className="text-primary hover:text-blue-700">
+          <Button variant="ghost" className="text-foreground hover:text-primary">
             Editar filtro
           </Button>
-          <Button variant="ghost" className="text-primary hover:text-blue-700">
+          <Button variant="ghost" className="text-foreground hover:text-primary">
             Limpar filtro
           </Button>
           <Button variant='default'>EXPORTAR DADOS</Button>

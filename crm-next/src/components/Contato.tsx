@@ -18,7 +18,7 @@ import {
 import { contatos } from '@/data/contatoData'
 
 export default function Contato() {
- return (
+  return (
     <div className="min-h-screen bg-background p-6 font-sans text-foreground">
       <div className="mb-6 flex items-center justify-center space-x-2 text-lg font-semibold text-foreground">
         <Contact />
@@ -28,7 +28,7 @@ export default function Contato() {
       <div className="mb-6 flex items-center justify-between rounded-lg bg-background p-4 shadow-sm">
         <div className="flex items-center space-x-6">
           <div className="text-md font-medium text-foreground">
-            Contatos: <span className="text-primary">1972</span>
+            Contatos: <span className="text-primary">{contatos.length}</span>
           </div>
           <div className="relative flex items-center">
             <Search className="absolute left-3 h-4 w-4 text-gray-400" />

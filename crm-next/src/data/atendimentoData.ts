@@ -4,7 +4,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "1",
     cliente: "--",
-    contato: "Monica DP Renel",
+    contato: "Monica",
     status: "Concluído",
     atendidoPor: "Fiscal Equipe 7",
     data: "14/07/2025 - 13:13",
@@ -12,7 +12,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "2",
     cliente: "--",
-    contato: "Bruno Guerra - PRO SOLUTI...",
+    contato: "Bruno",
     status: "Pendente",
     atendidoPor: "Fiscal Equipe 7",
     data: "14/07/2025 - 13:15",
@@ -20,7 +20,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "3",
     cliente: "--",
-    contato: "SR ANTONIO - ENCRUZILH...",
+    contato: "SR ANTONIO",
     status: "Cancelado",
     atendidoPor: "Manuela Nascimento",
     data: "14/07/2025 - 13:08",
@@ -28,7 +28,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "4",
     cliente: "--",
-    contato: "SOLEDADE ENCRUZILHADA",
+    contato: "SOLEDADE",
     status: "Concluído",
     atendidoPor: "Manuela Nascimento",
     data: "14/07/2025 - 13:07",
@@ -36,7 +36,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "5",
     cliente: "--",
-    contato: "Jefferson Paulo HEAD COFFE",
+    contato: "Jefferson",
     status: "Em andamento",
     atendidoPor: "Fiscal Equipe 8",
     data: "14/07/2025 - 13:06",
@@ -44,7 +44,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "6",
     cliente: "--",
-    contato: "WLADMIR GI INDUSTRIA",
+    contato: "WLADMIR",
     status: "Concluído",
     atendidoPor: "Fiscal Equipe 8",
     data: "14/07/2025 - 13:06",
@@ -52,7 +52,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "7",
     cliente: "--",
-    contato: "Anaoliveira Oliveira",
+    contato: "Ana Oliveira",
     status: "Concluído",
     atendidoPor: "Manuela Nascimento",
     data: "14/07/2025 - 13:04",
@@ -60,7 +60,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "8",
     cliente: "--",
-    contato: "PREFEITURA - Franciscópolis",
+    contato: "PREFEITURA",
     status: "Concluído",
     atendidoPor: "Fiscal Equipe 7",
     data: "14/07/2025 - 13:00",
@@ -68,7 +68,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "9",
     cliente: "--",
-    contato: "Eraldo - Bandeira Repres.",
+    contato: "Eraldo",
     status: "Concluído",
     atendidoPor: "Thiago Marcelo",
     data: "14/07/2025 - 12:54",
@@ -76,7 +76,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "10",
     cliente: "--",
-    contato: "Felisberto - São João Auto P...",
+    contato: "Felisberto",
     status: "Concluído",
     atendidoPor: "Ana Cristina Ferreira Fernan...",
     data: "14/07/2025 - 12:34",
@@ -84,7 +84,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "11",
     cliente: "--",
-    contato: "Anielly Contas A Pagar",
+    contato: "Anielly",
     status: "Concluído",
     atendidoPor: "Kassia Ramos",
     data: "14/07/2025 - 12:31",
@@ -92,7 +92,7 @@ export const atendimentos: Atendimento[] = [
   {
     id: "12",
     cliente: "--",
-    contato: "Marcos Junior - MAVISA",
+    contato: "Marcos",
     status: "Concluído",
     atendidoPor: "INCORPORAÇÃO",
     data: "14/07/2025 - 11:59",

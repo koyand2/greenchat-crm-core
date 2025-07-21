@@ -15,37 +15,10 @@ import {
   TableHeader,
   TableRow,
 } from './ui/table'
+import { contatos } from '@/data/contatoData'
 
 export default function Contato() {
-  const contactsData = [
-    {
-      nome: 'Brenna mtb',
-      telefone: '+55 83 91234-7767',
-      criadoEm: '17/01/2025 13:35',
-    },
-    {
-      nome: 'Fernando Júnior Espritcont Contabilidade',
-      telefone: '+55 81 91234-3151',
-      criadoEm: '28/01/2025 14:03',
-    },
-    {
-      nome: 'Caldiane do Eco Detran Escritório',
-      telefone: '+55 81 91234-9341',
-      criadoEm: '13/01/2023 14:03',
-    },
-    {
-      nome: 'PREFEITURA - Carlos Chagas - IKI',
-      telefone: '+55 81 91234-9341',
-      criadoEm: '01/01/2025 14:46',
-    },
-    {
-      nome: 'PREFEITURA - Franciscópolis',
-      telefone: '+55 81 91234-4321',
-      criadoEm: '01/01/2025 14:47',
-    },
-  ]
-
-  return (
+ return (
     <div className="min-h-screen bg-background p-6 font-sans text-foreground">
       <div className="mb-6 flex items-center justify-center space-x-2 text-lg font-semibold text-foreground">
         <Contact />
@@ -95,7 +68,7 @@ export default function Contato() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {contactsData.map((contact, index) => (
+            {contatos.map((contact, index) => (
               <TableRow key={index} className="border-b last:border-0 hover:bg-background">
                 <TableCell className="whitespace-nowrap px-6 py-4 text-sm font-medium text-foreground">
                   {contact.nome}

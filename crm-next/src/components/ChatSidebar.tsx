@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface ContactSidebarProps {
+interface ChatSidebarProps {
   contacts: ContactType[];
   selectedContact: ContactType | null;
   onSelectContact: (contact: ContactType) => void;
@@ -19,7 +19,7 @@ interface ContactSidebarProps {
   onToggle: () => void;
 }
 
-const ContactSidebar: React.FC<ContactSidebarProps> = ({
+const ChatSidebar: React.FC<ChatSidebarProps> = ({
   contacts,
   selectedContact,
   onSelectContact,
@@ -214,4 +214,4 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
   );
 };
 
-export default ContactSidebar;
+export default ChatSidebar;

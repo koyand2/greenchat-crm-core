@@ -4,10 +4,11 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
-import ContactSidebar from "@/components/ChatSidebar";
+import ChatSidebar from "@/components/ChatSidebar";
 import ChatInterface from "@/components/ChatInterface";
 import Contato from "@/components/Contato";
 import Dashboard from "@/components/Dashboard";
+import Atendimentos from "@/components/Atendimentos";
 import { ContactType, Message } from "@/types/chat";
 import { mockContacts, mockMessages } from "@/data/mockData";
 import { LayoutDashboard, MessageCircle, Contact, History } from "lucide-react";
@@ -72,7 +73,7 @@ const CRM = () => {
       />
 
       <div className="flex-1 flex overflow-auto h-[calc(100vh)]">
-        <ContactSidebar
+        <ChatSidebar
           contacts={contacts}
           selectedContact={selectedContact}
           onSelectContact={handleSelectContact}
@@ -115,11 +116,11 @@ const CRM = () => {
                   <span>Contatos</span>
                 </TabsTrigger>
                 <TabsTrigger
-                  value="historico"
+                  value="atendimentos"
                   className="flex items-center"
                 >
                   <History />
-                  <span>Histórico</span>
+                  <span>Atendimentos</span>
                 </TabsTrigger>
               </TabsList>
             </div>
@@ -130,7 +131,7 @@ const CRM = () => {
 
             <TabsContent
               value="chat"
-              className="flex-1 m-0 h-0 overflow-hidden"
+              className="flex-1 m-0 h-0 overflow-auto"
             >
               {selectedContact ? (
                 <ChatInterface
@@ -168,6 +169,12 @@ const CRM = () => {
               value="contatos"
             >
               <Contato />
+            </TabsContent>
+            <TabsContent
+              className="flex-1 m-0 overflow-auto"
+              value="atendimentos"
+            >
+              <Atendimentos />
             </TabsContent>
           </Tabs>
         </main>

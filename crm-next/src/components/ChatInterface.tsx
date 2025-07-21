@@ -1,9 +1,7 @@
 'use client'
-
 import React, { useState, useRef, useEffect } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -12,12 +10,11 @@ import {
   Send,
   Paperclip,
   Mic,
-  MoreVertical,
   CircleCheck,
   ExternalLink,
   Check,
   CheckCheck,
-  Search
+  Search,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Textarea } from "./ui/textarea";
@@ -72,11 +69,44 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   };
 
   const formatTime = (date: Date) => {
-    return new Intl.DateTimeFormat("en-US", {
+    return new Intl.DateTimeFormat("pt-BR", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: false,
     }).format(date);
+  };
+
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }).format(date);
+  };
+
+  // Separar mensagens por atendimentos
+  const organizeMessages = () => {
+    const organized = [];
+
+    // Sessão de início do atendimento
+    organized.push({
+      type: 'session-start',
+      title: 'Atendimento iniciado',
+      subtitle: `Por Levi em ${formatDate(new Date())} - 11:19`,
+      color: 'blue',
+      messages: messages
+    });
+
+    // Sessão de conclusão do atendimento  
+    organized.push({
+      type: 'session-end',
+      title: 'Atendimento concluído',
+      subtitle: `Por Elen Farias em ${formatDate(new Date())} - 12:54`,
+      color: 'green',
+      messages: []
+    });
+
+    return organized;
   };
 
   const MessageBubble: React.FC<{ message: Message }> = ({ message }) => (
@@ -94,7 +124,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
           </AvatarFallback>
         </Avatar>
       )}
-
       <div
         className={cn(
           "max-w-xs lg:max-w-md px-4 py-2 rounded-2xl shadow-sm",
@@ -126,7 +155,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
           )}
         </div>
       </div>
-
       {message.isFromUser && (
         <Avatar className="h-8 w-8 ml-2 mt-1">
           <AvatarFallback className="bg-primary text-white text-xs">
@@ -137,8 +165,24 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
     </div>
   );
 
+  const SessionHeader: React.FC<{ session: any }> = ({ session }) => (
+    <div className="flex items-center mb-4 pl-0"> 
+      <div className="flex-1">
+        <div className={cn(
+          "text-sm font-medium",
+          session.color === 'blue' ? "text-primary" : "text-green-600"
+        )}>
+          {session.title}
+        </div>
+        <div className="text-xs text-muted-foreground">
+          {session.subtitle}
+        </div>
+      </div>
+    </div>
+  );
+
   const TypingIndicator = () => (
-    <div className="flex items-center space-x-2 mb-4">
+    <div className="flex items-center space-x-2 mb-4 pl-4">
       <Avatar className="h-8 w-8">
         <AvatarImage src={contact.avatar} alt={contact.name} />
         <AvatarFallback className="bg-primary text-foreground text-xs">
@@ -161,8 +205,11 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
     </div>
   );
 
+  const organizedSessions = organizeMessages();
+
   return (
     <div className="flex flex-col h-full max-h-[calc(100vh-64px-48px)] overflow-hidden bg-gradient-chat">
+      {/* Header */}
       <div className="flex-shrink-0 border-b border-border bg-card/80 backdrop-blur-sm p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -190,7 +237,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
                   }
                   className="text-xs text-white"
                 >
-                  {contact.status === "typing" ? "typing..." : contact.status}
+                  {contact.status === "typing" ? "digitando..." : contact.status}
                 </Badge>
                 {contact.tags.map((tag) => (
                   <Badge key={tag} variant="secondary" className="text-xs">
@@ -200,7 +247,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
               </div>
             </div>
           </div>
-
           <div className="flex items-center space-x-2">
             <TooltipProvider>
               <div className="flex items-center space-x-2">
@@ -218,7 +264,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
                     <p>Finalizar Atendimento</p>
                   </TooltipContent>
                 </Tooltip>
-
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
@@ -233,7 +278,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
                     <p>Transferir Atendimento</p>
                   </TooltipContent>
                 </Tooltip>
-
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
@@ -254,20 +298,30 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         </div>
       </div>
 
-      {/* Messages Area */}
       <div className="flex-1 min-h-0">
         <ScrollArea className="h-full">
-          <div className="px-4 py-4 space-y-4">
-            {messages.map((message) => (
-              <MessageBubble key={message.id} message={message} />
-            ))}
-            {isTyping && <TypingIndicator />}
+          <div className="py-4 space-y-6 px-4"> 
+            <div className="border-l-2 border-primary/70 ml-2 pl-4"> 
+              {organizedSessions.map((session, sessionIndex) => (
+                <div key={sessionIndex} className="space-y-4">
+                  <SessionHeader session={session} />
+                  <div className="pl-0 space-y-2">
+                    {session.messages.map((message) => (
+                      <MessageBubble key={message.id} message={message} />
+                    ))}
+                  </div>
+                </div>
+              ))}
+              {isTyping && (
+                <div className="pl-4">
+                  <TypingIndicator />
+                </div>
+              )}
+            </div>
             <div ref={messagesEndRef} />
           </div>
         </ScrollArea>
       </div>
-
-      {/* Message Input */}
       <div className="flex-shrink-0 border-t border-border bg-card/80 backdrop-blur-sm p-4">
         <div className="flex items-center space-x-2">
           <Button
@@ -277,15 +331,15 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
           >
             <Paperclip className="h-4 w-4" />
           </Button>
-
           <div className="flex-1 relative">
             <Textarea
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Type a message..."
-              className="pr-12"
-            ></Textarea>
+              placeholder="Digite uma mensagem..."
+              className="pr-12 resize-none"
+              rows={1}
+            />
             <Button
               variant="ghost"
               size="icon"
@@ -294,7 +348,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
               <Mic className="h-4 w-4" />
             </Button>
           </div>
-
           <Button
             onClick={handleSendMessage}
             disabled={!newMessage.trim()}

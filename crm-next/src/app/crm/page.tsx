@@ -4,11 +4,12 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
-import ContactSidebar from "@/components/ContactSidebar";
+import ContactSidebar from "@/components/ChatSidebar";
 import ChatInterface from "@/components/ChatInterface";
+import Contato from "@/components/Contato";
 import Dashboard from "@/components/Dashboard";
 import { ContactType, Message } from "@/types/chat";
-import { mockContacts, mockMessages } from "@/data/mockData"; // Assuming you have mock data
+import { mockContacts, mockMessages } from "@/data/mockData";
 import { LayoutDashboard, MessageCircle, Contact, History } from "lucide-react";
 
 const CRM = () => {
@@ -141,26 +142,32 @@ const CRM = () => {
                 <div className="flex-1 flex items-center justify-center">
                   <div className="text-center space-y-4">
                     <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                      <MessageCircle className="w-8 h-8 text-white" />
+                      <MessageCircle className="w-8 h-8 text-foreground" />
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-foreground mb-2">
-                        Select a conversation
+                        Selecione um atendimento
                       </h3>
                       <p className="text-muted-foreground">
-                        Choose a contact from the sidebar to start chatting
+                        Escolha um contato da barra lateral para começar a conversa.
                       </p>
                     </div>
                     <Button
                       onClick={() => setActiveTab("dashboard")}
-                      variant="outline"
+                      variant="default"
                       className="mt-4"
                     >
-                      View Dashboard
+                      Visualizar Dashboard
                     </Button>
                   </div>
                 </div>
               )}
+            </TabsContent>
+            <TabsContent
+              className="flex-1 m-0"
+              value="contatos"
+            >
+              <Contato />
             </TabsContent>
           </Tabs>
         </main>

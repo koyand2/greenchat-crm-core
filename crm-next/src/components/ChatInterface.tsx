@@ -101,7 +101,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
     organized.push({
       type: 'session-end',
       title: 'Atendimento concluído',
-      subtitle: `Por Elen Farias em ${formatDate(new Date())} - 12:54`,
+      subtitle: `Por Levi em ${formatDate(new Date())} - 12:54`,
       color: 'green',
       messages: []
     });
@@ -158,7 +158,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
       {message.isFromUser && (
         <Avatar className="h-8 w-8 ml-2 mt-1">
           <AvatarFallback className="bg-primary text-white text-xs">
-            You
+            C
           </AvatarFallback>
         </Avatar>
       )}
@@ -166,7 +166,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   );
 
   const SessionHeader: React.FC<{ session: any }> = ({ session }) => (
-    <div className="flex items-center mb-4 pl-0"> 
+    <div className="flex items-center mb-4 pl-0">
       <div className="flex-1">
         <div className={cn(
           "text-sm font-medium",
@@ -300,8 +300,8 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
       <div className="flex-1 min-h-0">
         <ScrollArea className="h-full">
-          <div className="py-4 space-y-6 px-4"> 
-            <div className="border-l-2 border-primary/70 ml-2 pl-4"> 
+          <div className="py-4 space-y-6 px-4">
+            <div className="border-l-2 border-primary/70 ml-2 pl-4">
               {organizedSessions.map((session, sessionIndex) => (
                 <div key={sessionIndex} className="space-y-4">
                   <SessionHeader session={session} />

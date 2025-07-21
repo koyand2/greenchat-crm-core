@@ -6,10 +6,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ContactType } from "@/types/chat";
 import {
-  MessageCircle,
-  Users,
-  Bell,
-  Activity,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";

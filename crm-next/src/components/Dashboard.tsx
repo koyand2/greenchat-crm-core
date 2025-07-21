@@ -8,18 +8,7 @@ import { Separator } from './ui/separator';
 import Image from 'next/image';
 
 const Dashboard = () => {
-  const weeklySummary = {
-    initiated: { current: 105, previous: 609 },
-    completed: { current: 82, previous: 597 },
-    disregarded: { current: 3, previous: 13 },
-  };
-
-  const monthlySummary = {
-    initiated: { current: 1218, previous: 2383 },
-    completed: { current: 1186, previous: 2372 },
-    disregarded: { current: 25, previous: 56 },
-  };
-
+  
   const topContacts = [
     { name: 'Isabelle - EBS Comercio e Se...', initials: 'I', count: 10 },
     { name: 'Leonardo Farias - BEGGIN B...', initials: 'LF', count: 10 },

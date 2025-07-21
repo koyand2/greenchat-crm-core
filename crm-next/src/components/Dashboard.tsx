@@ -4,9 +4,10 @@ import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Info, Users, CheckCircle, Clock } from 'lucide-react';
+import { Separator } from './ui/separator';
+import Image from 'next/image';
 
 const Dashboard = () => {
-  // Data adapted from the image
   const weeklySummary = {
     initiated: { current: 105, previous: 609 },
     completed: { current: 82, previous: 597 },
@@ -33,56 +34,63 @@ const Dashboard = () => {
 
   return (
     <div className="flex-1 p-4 space-y-4 bg-background min-h-screen">
-      {/* Header */}
       <div className="flex items-center space-x-2 mb-6">
-        <span className="text-sm text-muted-foreground">Olá, Depto TI</span>
+        <span className="text-sm text-foreground">Olá, Colaborador</span>
         <span className="text-lg">👋</span>
-        <span className="text-sm text-muted-foreground">Aqui está uma <strong>visão geral das últimas estatísticas</strong></span>
+        <span className="text-sm text-foreground">Aqui está uma <strong className='text-primary'>visão geral das últimas estatísticas</strong></span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* Left column - Atendimentos */}
         <div className="lg:col-span-2 space-y-4">
-          {/* Atendimentos da semana atual */}
-          <Card className="shadow-sm bg-card">
-            <CardHeader className="pb-3">
-              <div className="flex items-center space-x-2">
-                <CardTitle className="text-sm font-medium text-foreground">
-                  Atendimentos da semana atual
-                </CardTitle>
-                <Info className="h-4 w-4 text-muted-foreground" />
-              </div>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <div className="flex space-x-4">
-                <div className="text-center">
-                  <div className="bg-primary text-primary-foreground px-3 py-1 rounded text-sm font-medium">
-                    105 Iniciados
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">Semana anterior</p>
-                  <p className="text-sm font-medium text-foreground">609</p>
+          {/* Card ajustado para não ocupar toda a largura */}
+          <div className="flex gap-4">
+            <Card className="shadow-xl bg-card object-contain w-160">
+              <CardHeader className="pb-1">
+                <div className="flex items-center space-x-2">
+                  <CardTitle className="text-sm font-medium text-foreground">
+                    Atendimentos da semana atual
+                  </CardTitle>
+                  <Info className="h-4 w-4 text-muted-foreground" />
                 </div>
-                <div className="text-center">
-                  <div className="bg-green-500 text-white px-3 py-1 rounded text-sm font-medium">
-                    82 Concluídos
+              </CardHeader>
+              <CardContent className="pt-0">
+                <div className="flex space-x-4">
+                  <div className="text-center">
+                    <div className="bg-primary text-white px-3 py-1 rounded text-sm font-medium">
+                      105 Iniciados
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">Semana anterior</p>
+                    <p className="text-sm font-medium text-foreground">609</p>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">Semana anterior</p>
-                  <p className="text-sm font-medium text-foreground">597</p>
-                </div>
-                <div className="text-center">
-                  <div className="bg-red-500 text-white px-3 py-1 rounded text-sm font-medium">
-                    03 Desconsiderados
+                  <div className="text-center">
+                    <div className="bg-green-800 text-white px-3 py-1 rounded text-sm font-medium">
+                      82 Concluídos
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">Semana anterior</p>
+                    <p className="text-sm font-medium text-foreground">597</p>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">Semana anterior</p>
-                  <p className="text-sm font-medium text-foreground">13</p>
+                  <div className="text-center">
+                    <div className="bg-red-500 text-white px-3 py-1 rounded text-sm font-medium">
+                      03 Desconsiderados
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">Semana anterior</p>
+                    <p className="text-sm font-medium text-foreground">13</p>
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+            <Image
+              src='/arte_dashboard.svg'
+              width={220}
+              height={200}
+              alt='Arte dashboard'
+              className='lg:ml-4'
+            />
+          </div>
 
           {/* Atendimentos do mês atual */}
-          <Card className="shadow-sm bg-card">
-            <CardHeader className="pb-3">
+          <Card className="shadow-lg bg-card">
+            <CardHeader>
               <div className="flex items-center space-x-2">
                 <CardTitle className="text-sm font-medium text-foreground">
                   Atendimentos do mês atual
@@ -94,17 +102,17 @@ const Dashboard = () => {
               <div className="grid grid-cols-3 gap-4">
                 <div className="border-l-4 border-border pl-3">
                   <p className="text-xs text-muted-foreground">Iniciados</p>
-                  <p className="text-xl font-bold text-orange-500">1218</p>
+                  <p className="text-xl font-bold text-primary">1218</p>
                   <p className="text-xs text-muted-foreground">2383 Mês anterior</p>
                 </div>
                 <div className="border-l-4 border-border pl-3">
                   <p className="text-xs text-muted-foreground">Concluídos</p>
-                  <p className="text-xl font-bold text-green-500">1186</p>
+                  <p className="text-xl font-bold text-green-600">1186</p>
                   <p className="text-xs text-muted-foreground">2372 Mês anterior</p>
                 </div>
                 <div className="border-l-4 border-border pl-3">
                   <p className="text-xs text-muted-foreground">Desconsiderados</p>
-                  <p className="text-xl font-bold text-red-500">25</p>
+                  <p className="text-xl font-bold text-red-600">25</p>
                   <p className="text-xs text-muted-foreground">56 Mês anterior</p>
                 </div>
               </div>
@@ -114,8 +122,8 @@ const Dashboard = () => {
           {/* Bottom row - Contatos e Funcionários */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Contatos com mais atendimentos iniciados */}
-            <Card className="shadow-sm bg-card">
-              <CardHeader className="pb-3">
+            <Card className="shadow-xl bg-card">
+              <CardHeader>
                 <div className="flex items-center space-x-2">
                   <Users className="h-4 w-4 text-muted-foreground" />
                   <CardTitle className="text-sm font-medium text-foreground">
@@ -144,8 +152,8 @@ const Dashboard = () => {
             </Card>
 
             {/* Funcionários com mais atendimentos concluídos */}
-            <Card className="shadow-sm bg-card">
-              <CardHeader className="pb-3">
+            <Card className="shadow-xl bg-card">
+              <CardHeader>
                 <div className="flex items-center space-x-2">
                   <Users className="h-4 w-4 text-muted-foreground" />
                   <CardTitle className="text-sm font-medium text-foreground">
@@ -177,7 +185,7 @@ const Dashboard = () => {
 
         {/* Right column - Tempo médio */}
         <div className="lg:col-span-1">
-          <Card className="shadow-sm bg-background h-full">
+          <Card className="shadow-xl bg-background h-full">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
                 <CardTitle className="text-sm font-medium text-foreground">
@@ -185,51 +193,60 @@ const Dashboard = () => {
                 </CardTitle>
                 <Info className="h-4 w-4 text-foreground" />
               </div>
+              <div className="flex items-center justify-center text-base font-semibold gap-2">
+                <Clock className='w-5 h-5 text-primary' />
+                <span className="text-foreground">Atendimentos</span>
+              </div>
             </CardHeader>
-            <CardContent className="pt-0 flex flex-col items-center justify-center h-64">
-              {/* Circular progress */}
-              <div className="relative w-32 h-32 mb-4">
+            <CardContent className="pt-0 flex flex-col items-center justify-center">
+              {/* Círculo de progresso principal */}
+              <div className="relative w-32 h-32 mb-6">
                 <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" strokeWidth="8" />
                   <circle cx="50" cy="50" r="45" fill="none" stroke="#3b82f6" strokeWidth="8"
-                    strokeDasharray="283" strokeDashoffset="70" strokeLinecap="round" />
+                    strokeDasharray="283" strokeDashoffset="0" strokeLinecap="round" />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-2xl font-bold text-blue-500">9h 24m</span>
-                  <span className="text-xs text-gray-500">Mês atual</span>
+                  <span className="text-2xl font-bold text-primary">8h 10m</span>
+                  <span className="text-xs text-foreground">Mês atual</span>
                 </div>
               </div>
 
-              <div className="space-y-2 text-center">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-foreground">🕐 Atendimento</span>
+              <div className="w-full max-w-xs space-y-1">
+                {/* Seção de Comparação Mensal */}
+                <div className="bg-muted-background p-4 rounded-lg shadow-xl">
+                  <h4 className="text-sm font-semibold text-primary mb-2">Comparação Mensal</h4>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-foreground">Mês anterior</span>
+                    <span className="font-medium text-foreground">9h 5m</span>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-foreground">9h 5m</span> <br />
-                  <span className="text-foreground">Mês anterior</span>
-                </div> 
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-foreground">1d 2h</span>
-                  <span className="text-foreground">Semana</span>
+
+                <Separator />
+
+                {/* Seção de Dados Semanais */}
+                <div className="bg-muted-background p-4 shadow-xl rounded-lg">
+                  <h4 className="text-sm font-semibold text-primary mb-2">Dados Semanais</h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-foreground">Semana 1</span>
+                      <span className="font-medium text-foreground">1d 2h</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-foreground">Semana 2</span>
+                      <span className="font-medium text-foreground">8h 15m</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-foreground">Semana 3</span>
+                      <span className="font-medium text-foreground">12h 56m</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-foreground">Semana 4</span>
+                      <span className="font-medium text-foreground">5h 8m</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-foreground">8h 15m</span>
-                  <span className="text-foreground">Semana</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-foreground">🔄 1ª resposta</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-foreground">12h 56m</span>
-                  <span className="text-foreground">Semana</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-foreground">💬 Conversas</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-foreground">5h 8m</span>
-                  <span className="text-foreground">Semana</span>
-                </div>
+                <Separator />
               </div>
             </CardContent>
           </Card>

@@ -129,7 +129,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
       {message.isFromUser && (
         <Avatar className="h-8 w-8 ml-2 mt-1">
-          <AvatarFallback className="bg-gradient-secondary text-white text-xs">
+          <AvatarFallback className="bg-primary text-white text-xs">
             You
           </AvatarFallback>
         </Avatar>
@@ -141,7 +141,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
     <div className="flex items-center space-x-2 mb-4">
       <Avatar className="h-8 w-8">
         <AvatarImage src={contact.avatar} alt={contact.name} />
-        <AvatarFallback className="bg-gradient-primary text-white text-xs">
+        <AvatarFallback className="bg-primary text-foreground text-xs">
           {contact.name.charAt(0)}
         </AvatarFallback>
       </Avatar>
@@ -169,12 +169,12 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
             <div className="relative">
               <Avatar className="h-10 w-10">
                 <AvatarImage src={contact.avatar} alt={contact.name} />
-                <AvatarFallback className="bg-gradient-primary text-white">
+                <AvatarFallback className="bg-primary text-white">
                   {contact.name.charAt(0)}
                 </AvatarFallback>
               </Avatar>
               {contact.status === "online" && (
-                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-success rounded-full border-2 border-white" />
+                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
               )}
             </div>
             <div>

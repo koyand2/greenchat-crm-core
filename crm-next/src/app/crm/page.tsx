@@ -70,7 +70,7 @@ const CRM = () => {
         onToggleSidebar={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
       />
 
-      <div className="flex-1 flex lg:overflow-auto h-[calc(100vh)]">
+      <div className="flex-1 flex overflow-auto h-[calc(100vh)]">
         <ContactSidebar
           contacts={contacts}
           selectedContact={selectedContact}
@@ -138,9 +138,9 @@ const CRM = () => {
                   onSendMessage={handleSendMessage}
                 />
               ) : (
-                <div className="flex-1 flex items-center justify-center bg-gradient-secondary">
+                <div className="flex-1 flex items-center justify-center">
                   <div className="text-center space-y-4">
-                    <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                       <MessageCircle className="w-8 h-8 text-white" />
                     </div>
                     <div>

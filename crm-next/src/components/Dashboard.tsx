@@ -33,7 +33,7 @@ const Dashboard = () => {
         <div className="lg:col-span-2 space-y-4">
           {/* Card ajustado para não ocupar toda a largura */}
           <div className="flex gap-4">
-            <Card className="shadow-xl bg-card object-contain max-w-140">
+            <Card className="shadow-xl bg-card object-contain w-full">
               <CardHeader className="pb-1">
                 <div className="flex items-center space-x-2">
                   <CardTitle className="text-sm font-medium text-foreground">

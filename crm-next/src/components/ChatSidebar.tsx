@@ -148,7 +148,7 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({
               className="text-xs flex items-center space-x-1"
             >
               <span>Contatos</span>
-              <Badge variant="secondary" className="h-4 px-1 text-xs">
+              <Badge variant="destructive" className="h-4 px-1 text-xs">
                 {filteredContacts.all.length}
               </Badge>
             </TabsTrigger>
@@ -157,6 +157,11 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({
               className="text-xs flex items-center space-x-1"
             >
               <span className="">Em andamento</span>
+              {filteredContacts.unread.length > 0 && (
+                <Badge variant="destructive" className="h-4 px-1 text-xs">
+                  {filteredContacts.active.length}
+                </Badge>
+              )}
             </TabsTrigger>
             <TabsTrigger
               value="active"
@@ -164,7 +169,7 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({
             >
               <span>Pendente</span>
               {filteredContacts.active.length > 0 && (
-                <Badge variant="secondary" className="h-4 px-1 text-xs">
+                <Badge variant="destructive" className="h-4 px-1 text-xs">
                   {filteredContacts.active.length}
                 </Badge>
               )}

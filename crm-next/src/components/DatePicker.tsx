@@ -10,6 +10,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { ptBR } from "date-fns/locale"
 
 interface DatePickerProps {
   text: string
@@ -30,7 +31,7 @@ export function DatePicker({ text }: DatePickerProps) {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <Calendar mode="single" selected={date} onSelect={setDate} />
+        <Calendar mode="single" selected={date} onSelect={setDate} locale={ptBR} />
       </PopoverContent>
     </Popover>
   )

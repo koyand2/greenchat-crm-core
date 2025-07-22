@@ -1,4 +1,4 @@
-import { ChevronDown, Contact } from 'lucide-react';
+import { ChevronDown, Contact, Download, Trash, BookOpenText } from 'lucide-react';
 import GenericDataTable from "./GenericTable";
 import { contatos } from "@/data/contatoData";
 
@@ -28,25 +28,20 @@ export default function Contato() {
 
   const actions = [
     {
-      label: 'Aplicar filtro',
-      variant: 'ghost',
-      onClick: () => console.log('Edit filter clicked')
-    },
-    {
       label: 'Limpar filtro',
+      icon: <Trash />,
       variant: 'ghost',
-      onClick: () => console.log('Clear filter clicked')
     },
 
     {
-      label: 'IMPORTAR CONTATOS DO WHATSAPP',
+      label: 'IMPORTAR CONTATOS',
+      icon: <Download />,
       variant: 'ghost',
-      onClick: () => console.log('Import WhatsApp contacts clicked')
     },
     {
       label: 'CADASTRAR',
+      icon: <BookOpenText />,
       variant: 'default',
-      onClick: () => console.log('Register clicked')
     },
   ];
 
@@ -64,7 +59,7 @@ export default function Contato() {
         filters={[]}
         actions={actions}
         showRowActions={false}
-        itemsPerPage={2}
+        itemsPerPage={3}
       />
     </div>
   );

@@ -68,13 +68,13 @@ const Dashboard = () => {
                 </div>
               </CardContent>
             </Card>
-            <Image
+            {/* <Image
               src='/arte_dashboard.svg'
               width={220}
               height={200}
               alt='Arte dashboard'
               className='ml-4'
-            />
+            /> */}
           </div>
 
           {/* Atendimentos do mês atual */}

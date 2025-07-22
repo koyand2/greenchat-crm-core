@@ -1,5 +1,6 @@
 import GenericDataTable from "./GenericTable";
 import { atendimentos } from "@/data/atendimentoData";
+import { Download, Filter, Trash, Upload } from 'lucide-react';
 
 export default function Atendimentos() {
   const columns = [
@@ -16,7 +17,7 @@ export default function Atendimentos() {
       key: 'status',
       header: 'Status',
       type: 'badge',
-      getBadgeVariant: (status) => {
+      getBadgeVariant: (status: any) => {
         if (status === "Concluído") return "success";
         if (status === "Pendente") return "destructive";
         if (status === "Cancelado") return "destructive";
@@ -36,24 +37,19 @@ export default function Atendimentos() {
 
   const actions = [
     {
-      label: 'Aplicar filtro',
-      variant: 'ghost',
-      onClick: () => console.log('Clear filter clicked')
-    },
-    {
       label: 'Limpar filtro',
+      icon: <Trash />,
       variant: 'ghost',
-      className: 'text-foreground hover:text-primary',
-      onClick: () => console.log('Clear filter clicked')
     },
     {
       label: 'EXPORTAR DADOS',
+      icon: <Upload />,
       variant: 'default',
-      onClick: () => console.log('Export data clicked')
-    }
+    },
   ];
 
-  const handleRowAction = (action, item) => {
+
+  const handleRowAction = (action: any, item: any) => {
     if (action === 'view') {
       console.log('Ver detalhes do item:', item);
     }

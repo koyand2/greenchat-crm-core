@@ -50,7 +50,6 @@ export function DatePicker({ text }: DatePickerProps) {
           defaultMonth={new Date()}
           selected={date}
           onSelect={setDate}
-          className="rounded-lg border shadow-sm"
           locale={ptBR}
         />
       </PopoverContent>

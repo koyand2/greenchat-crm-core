@@ -96,7 +96,7 @@ export default function GenericDataTable({
               className="flex items-center justify-center text-xs"
               onClick={action.onClick}
             >
-              {action.icon && <span className="w-3 h-3">{action.icon}</span>}
+              {action.icon && <span className="flex items-center justify-center">{action.icon}</span>}
               {action.label}
             </Button>
           ))}

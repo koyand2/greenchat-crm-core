@@ -17,7 +17,10 @@ interface DatePickerProps {
 }
 
 export function DatePicker({ text }: DatePickerProps) {
-  const [date, setDate] = React.useState<Date>()
+  const [date, setDate] = React.useState({
+    from: undefined,
+    to: undefined
+  });
 
   return (
     <Popover>
@@ -27,11 +30,29 @@ export function DatePicker({ text }: DatePickerProps) {
           data-empty={!date}
         >
           <CalendarIcon />
-          {date ? format(date, "PPP") : <span>{text}</span>}
+          {date?.from ? (
+            date.to ? (
+              // Range completo selecionado
+              `${format(date.from, "PPP", { locale: ptBR })} - ${format(date.to, "PPP", { locale: ptBR })}`
+            ) : (
+              // Apenas data inicial selecionada
+              format(date.from, "PPP", { locale: ptBR })
+            )
+          ) : (
+            <span>{text}</span>
+          )}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <Calendar mode="single" selected={date} onSelect={setDate} locale={ptBR} />
+        <Calendar
+          mode="range"
+          numberOfMonths={2}
+          defaultMonth={new Date()}
+          selected={date}
+          onSelect={setDate}
+          className="rounded-lg border shadow-sm"
+          locale={ptBR}
+        />
       </PopoverContent>
     </Popover>
   )

@@ -1,6 +1,6 @@
 import GenericDataTable from "./GenericTable";
 import { atendimentos } from "@/data/atendimentoData";
-import { Download, Filter, Trash, Upload } from 'lucide-react';
+import { Trash, Upload } from 'lucide-react';
 
 export default function Atendimentos() {
   const columns = [

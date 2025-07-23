@@ -75,8 +75,7 @@ export default function GenericDataTable({
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-lg font-bold">{title} ({totalItems})</h2>
         <div className="flex items-center space-x-1">
-          <DatePicker text="Data de início" />
-          <DatePicker text="Data final" />
+          <DatePicker text="Filtrar por datas" />
           {filters.map((filter, index) => (
             <Badge key={index} variant="outline" className="flex items-center space-x-1 text-xs px-2 py-1">
               <span>{filter.label}</span>

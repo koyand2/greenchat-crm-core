@@ -72,10 +72,12 @@ export default function GenericDataTable({
 
   return (
     <div className="p-2">
+      <div className="flex align-middle justify-end mb-4">
+        <DatePicker text="Filtrar por datas" />
+      </div>
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-lg font-bold">{title} ({totalItems})</h2>
         <div className="flex items-center space-x-1">
-          <DatePicker text="Filtrar por datas" />
           {filters.map((filter, index) => (
             <Badge key={index} variant="outline" className="flex items-center space-x-1 text-xs px-2 py-1">
               <span>{filter.label}</span>
@@ -93,7 +95,7 @@ export default function GenericDataTable({
             <Button
               key={index}
               variant={action.variant || "ghost"}
-              className="flex items-center justify-center text-xs"
+              className="flex items-center justify-center"
               onClick={action.onClick}
             >
               {action.icon && <span className="flex items-center justify-center">{action.icon}</span>}

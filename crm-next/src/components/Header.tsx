@@ -1,7 +1,6 @@
 'use client'
 
 import React from "react";
-import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -13,7 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Search, Settings, LogOut, User, Moon, Sun, Phone } from "lucide-react";
+import { Settings, LogOut, User, Moon, Sun, Phone } from "lucide-react";
 
 
 interface HeaderProps {
@@ -21,7 +20,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
-  const { user, logout } = useAuth();
   const [isDark, setIsDark] = React.useState(false);
 
   const toggleTheme = () => {
@@ -70,14 +68,6 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">
-                    {user?.name}
-                  </p>
-                  <p className="text-xs leading-none text-foreground">
-                    {user?.email}
-                  </p>
-                </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
@@ -89,7 +79,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
                 <span>Settings</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={logout}>
+              <DropdownMenuItem>
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Log out</span>
               </DropdownMenuItem>

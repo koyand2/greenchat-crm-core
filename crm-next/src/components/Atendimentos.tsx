@@ -44,7 +44,6 @@ export default function Atendimentos() {
     {
       label: 'EXPORTAR DADOS',
       icon: <Upload />,
-      variant: 'default',
     },
   ];
 

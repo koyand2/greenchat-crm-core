@@ -51,6 +51,7 @@ export function DatePicker({ text }: DatePickerProps) {
           selected={date}
           onSelect={setDate}
           locale={ptBR}
+          className="text-xs"
         />
       </PopoverContent>
     </Popover>

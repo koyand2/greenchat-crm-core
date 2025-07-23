@@ -26,29 +26,30 @@ export default function Login() {
       setIsLoading(false);
       return;
     }
-    try {
-      // Simulate network delay
-      if (email === 'admin@crm.com' && password === 'admin123') {
-        router.push('/crm')
-      } else {
-        setError('E-mail ou senha inválidos.');
-      }
-    } catch (err) {
-      setError('An unexpected error occurred.');
-    } finally {
-      setIsLoading(false);
+
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    })
+
+    if (response.ok) {
+      router.push('/crm')
+    } else {
+      setIsLoading(false)
+      setError('Email ou senha incorretos.')
     }
   };
 
-  return ( // This is where the component should return its JSX
+  return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-900 via-blue-800 to-blue-600 px-4">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="text-center space-y-4">
           <div className="text-align-center justify-items-center">
-            <MessageCircle className="text-blue-600" />
+            <MessageCircle className="text-primary" />
           </div>
           <div>
-            <CardTitle className="text-2xl font-semibold text-blue-600">Connect</CardTitle>
+            <CardTitle className="text-2xl font-semibold text-primary">Connect</CardTitle>
           </div>
         </CardHeader>
         <CardContent>

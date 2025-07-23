@@ -41,7 +41,6 @@ export default function Contato() {
     {
       label: 'CADASTRAR',
       icon: <BookOpenText />,
-      variant: 'default',
     },
   ];
 

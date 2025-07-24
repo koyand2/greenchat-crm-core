@@ -1,14 +1,19 @@
+'use client'
+
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Info, Users, CheckCircle, Clock } from 'lucide-react';
+import { Info, Users, CheckCircle, Clock, Loader2 } from 'lucide-react';
 import { Separator } from './ui/separator';
-import Image from 'next/image';
+import { useAuth } from '@/contexts/AuthContext';
+import { capitalizeWords } from '@/lib/capitalize';
 
 const Dashboard = () => {
-  
+  const { user, loading } = useAuth();
+
+  if (loading) return <div className="flex align-baseline justify-center"><Loader2 className="mr-2 h-4 w-4 animate-spin text-primary" /> </div>;
+  if (!user) return <p>Não autenticado</p>;
+
   const topContacts = [
     { name: 'Isabelle - EBS Comercio e Se...', initials: 'I', count: 10 },
     { name: 'Leonardo Farias - BEGGIN B...', initials: 'LF', count: 10 },
@@ -24,7 +29,9 @@ const Dashboard = () => {
   return (
     <div className="flex-1 p-4 space-y-4 bg-background min-h-screen">
       <div className="flex items-center space-x-2 mb-6">
-        <span className="text-sm text-foreground">Olá, Colaborador</span>
+        <span className="text-sm text-foreground">
+          Olá, {capitalizeWords(user.nome)}
+        </span>
         <span className="text-lg">👋</span>
         <span className="text-sm text-foreground">Aqui está uma <strong className='text-primary'>visão geral das últimas estatísticas</strong></span>
       </div>

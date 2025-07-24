@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { MessageCircle, Loader2 } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -15,6 +16,8 @@ export default function Login() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { fetchUser } = useAuth();
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +37,11 @@ export default function Login() {
     })
 
     if (response.ok) {
-      router.push('/crm')
+      setTimeout(() => {
+        router.push('/crm');
+        fetchUser();
+      }, 2000);
+
     } else {
       setIsLoading(false)
       setError('Email ou senha incorretos.')
@@ -94,11 +101,6 @@ export default function Login() {
               )}
             </Button>
           </form>
-
-          <div className="mt-6 text-center text-sm text-muted-foreground">
-            <p>Demo credentials:</p>
-            <p className="font-medium">admin@crm.com / admin123</p>
-          </div>
         </CardContent>
       </Card>
     </div>

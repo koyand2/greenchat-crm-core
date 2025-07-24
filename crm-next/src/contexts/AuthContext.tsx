@@ -22,16 +22,18 @@ const AuthContext = createContext<AuthContextType>({
   fetchUser: () => { }
 });
 
+// Responsável por exibir os dados do usuário(colaborador no Front-end)
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [isClient, setIsClient] = useState(false);
 
+  // Rodando apenas em client-side (sem SSR.)
   useEffect(() => {
     setIsClient(true);
   }, []);
-  
+
   async function fetchUser() {
     try {
       const res = await fetch('/api/auth/me', {
@@ -51,17 +53,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  // Ignorando a rota de login
   useEffect(() => {
     if (pathname !== '/login' && !user) {
       fetchUser();
     }
   }, []);
-
-  useEffect(() => {
-    if (pathname === '/login') {
-      setUser(null); // Limpa o usuário ao ir para login
-    }
-  }, [pathname]);
 
   return (
     <AuthContext.Provider value={{ user, loading, fetchUser }}>

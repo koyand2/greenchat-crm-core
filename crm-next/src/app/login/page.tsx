@@ -40,7 +40,7 @@ export default function Login() {
       setTimeout(() => {
         router.push('/crm');
         fetchUser();
-      }, 2000);
+      }, 1000);
 
     } else {
       setIsLoading(false)

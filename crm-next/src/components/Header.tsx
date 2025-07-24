@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Settings, LogOut, User, Moon, Sun, Phone } from "lucide-react";
-
+import { logout } from "@/lib/auth";
 
 interface HeaderProps {
   onToggleSidebar: () => void;
@@ -21,6 +21,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
   const [isDark, setIsDark] = React.useState(false);
+  const handleLogout = async () => {
+    await logout();
+  }
 
   const toggleTheme = () => {
     setIsDark(!isDark);
@@ -72,16 +75,16 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
+                <span>Perfil</span>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
+                <span>Configurações</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogout}>
                 <LogOut className="mr-2 h-4 w-4" />
-                <span>Log out</span>
+                <span>Sair</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
